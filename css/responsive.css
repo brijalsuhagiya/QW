@@ -1,0 +1,53 @@
+/* ============================================================
+   responsive.css — ALL media queries live here.
+   The app is a focused single mobile column by default. On
+   tablets it gains breathing room; on desktop the column is
+   framed by an editorial brand panel. Content is capped and
+   centred so it never stretches on wide monitors.
+   ============================================================ */
+
+/* ---- Very small phones (320px) ---- */
+@media (max-width: 340px) {
+  :root { --page-margin: 16px; }
+  h1 { font-size: var(--fs-28); }
+  .splash__word { font-size: var(--fs-34); }
+  .otp__tile { font-size: var(--fs-20); }
+  .btn { font-size: var(--fs-14); padding: 0 var(--space-16); }
+}
+
+/* ---- Tablet and up: give the app column a device-like frame ---- */
+@media (min-width: 768px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-32);
+    background:
+      radial-gradient(120% 120% at 15% 0%, #1f5b46 0%, #14352a 55%, #0c231c 100%);
+  }
+  .stage { align-items: center; min-height: auto; }
+  .app {
+    min-height: 0;
+    height: min(900px, calc(100vh - 2 * var(--space-32)));
+    border-radius: var(--r-28);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  /* toast + overlays are scoped to the app frame feel */
+  .toast-wrap { bottom: var(--space-32); }
+}
+
+/* ---- Desktop: reveal the editorial brand panel beside the app ---- */
+@media (min-width: 1024px) {
+  .stage { gap: var(--space-64); padding: var(--space-48); }
+  .stage__brand { display: flex; }
+}
+
+/* ---- Wide monitors: keep everything centred within the cap ---- */
+@media (min-width: 1440px) {
+  .stage { padding: var(--space-64); }
+}
+
+/* ---- Landscape short screens: let content scroll, keep footer reachable ---- */
+@media (max-height: 560px) and (min-width: 768px) {
+  .app { height: calc(100vh - 2 * var(--space-32)); }
+}

@@ -1,0 +1,198 @@
+/* ============================================================
+   layout.css — app frame, phone shell, desktop composition,
+   header, scroll regions, map area, bottom sheet geometry
+   ============================================================ */
+
+/* ---- Desktop editorial stage ---- */
+.stage {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: var(--space-48);
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Editorial side panel — only shown on wide screens */
+.stage__brand {
+  display: none;
+  flex: 1 1 0;
+  max-width: 560px;
+  padding: var(--space-64) var(--space-48);
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-24);
+  color: var(--t-inverse);
+}
+.stage__brand .brand-mark {
+  width: 56px; height: 56px;
+  border: 3px solid var(--t-inverse);
+  border-radius: var(--r-pill);
+  display: grid; place-items: center;
+}
+.stage__brand h2 {
+  color: var(--t-inverse);
+  font-size: var(--fs-42);
+  line-height: var(--lh-tight);
+}
+.stage__brand p {
+  color: rgba(255,255,255,0.72);
+  font-size: var(--fs-18);
+  max-width: 42ch;
+}
+.stage__brand .brand-points {
+  display: flex; flex-direction: column; gap: var(--space-16);
+  margin-top: var(--space-16);
+}
+.stage__brand .brand-point {
+  display: flex; align-items: center; gap: var(--space-12);
+  color: rgba(255,255,255,0.9);
+  font-weight: var(--fw-medium);
+}
+.stage__brand .brand-point .dot {
+  width: 10px; height: 10px; border-radius: var(--r-pill); flex: none;
+}
+
+/* ---- The phone column (the app itself) ---- */
+.app {
+  width: 100%;
+  max-width: var(--app-max);
+  background: var(--c-paper);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-2);
+}
+
+/* Screen container: fills the app, column layout */
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  position: relative;
+  background: var(--c-paper);
+}
+
+/* Dark screens (splash) */
+.screen--dark { background: var(--c-ink); }
+
+/* Scrollable content body */
+.screen__body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--page-margin);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+.screen__body--flush { padding: 0; }
+
+/* Sticky action footer pinned to bottom of the app column */
+.screen__footer {
+  flex: none;
+  padding: var(--space-16) var(--page-margin)
+           calc(var(--space-20) + env(safe-area-inset-bottom));
+  background: var(--c-paper);
+  border-top: 1px solid var(--c-line);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+.screen__footer--plain { border-top: none; }
+
+/* ---- Top app bar ---- */
+.appbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-16) var(--page-margin);
+  min-height: 60px;
+}
+.appbar__title {
+  font-size: var(--fs-20);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+}
+.appbar__sub {
+  font-size: var(--fs-13);
+  color: var(--t-secondary);
+  font-weight: var(--fw-regular);
+}
+.appbar__spacer { flex: 1; }
+
+/* Round icon button (back, menu, avatar) — 44px tap target */
+.icon-btn {
+  width: var(--tap-min);
+  height: var(--tap-min);
+  border-radius: var(--r-pill);
+  background: var(--c-surface);
+  display: grid;
+  place-items: center;
+  flex: none;
+  color: var(--t-primary);
+  transition: background var(--dur-fast) var(--ease);
+}
+.icon-btn:hover { background: var(--c-surface-2); }
+.icon-btn--ghost { background: transparent; }
+
+/* ---- Map region (CSS-drawn, no image assets) ---- */
+.map {
+  position: relative;
+  width: 100%;
+  background: #dfe4e8;
+  overflow: hidden;
+}
+.map--fill { flex: 1; min-height: 240px; }
+.map--panel { height: 220px; }
+
+/* Bottom sheet that overlays the lower part of a map screen */
+.sheet {
+  background: var(--c-paper);
+  border-top-left-radius: var(--r-28);
+  border-top-right-radius: var(--r-28);
+  box-shadow: var(--shadow-3);
+  padding: var(--space-12) var(--page-margin)
+           calc(var(--space-20) + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+.sheet__grabber {
+  width: 36px; height: 4px;
+  border-radius: var(--r-pill);
+  background: var(--c-line-strong);
+  margin: 0 auto var(--space-4);
+}
+/* When a map screen stacks map + sheet */
+.map-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.map-screen .map { flex: 1; min-height: 160px; }
+.map-screen .sheet {
+  flex: none;
+  max-height: 72%;
+  overflow-y: auto;
+  margin-top: -28px;      /* tuck under the map's rounded top */
+  position: relative;
+  z-index: 2;
+}
+
+/* Generic vertical stack helpers */
+.stack { display: flex; flex-direction: column; gap: var(--space-16); }
+.stack-8 { display: flex; flex-direction: column; gap: var(--space-8); }
+.stack-12 { display: flex; flex-direction: column; gap: var(--space-12); }
+.row { display: flex; align-items: center; gap: var(--space-12); }
+.row--between { justify-content: space-between; }
+.row--wrap { flex-wrap: wrap; }
+.spacer { flex: 1; }
+.center { text-align: center; }
