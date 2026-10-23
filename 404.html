@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickWheel — page not found</title>
+  <!-- Send the visitor back to the app. GitHub Pages serves this file for any
+       path it cannot resolve; a relative link keeps it working under /repo/. -->
+  <meta http-equiv="refresh" content="1;url=./">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* Minimal inline exception: this standalone page never loads the JS app,
+       so a tiny amount of centring is defined here. */
+    body { display: grid; place-items: center; min-height: 100vh; background: var(--c-ink); padding: var(--space-24); }
+  </style>
+</head>
+<body>
+  <div class="splash" style="color:#fff; text-align:center; gap:16px;">
+    <div class="splash__mark">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+        <circle cx="12" cy="12" r="4"></circle>
+        <line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line>
+        <line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line>
+      </svg>
+    </div>
+    <div class="splash__word">QuickWheel</div>
+    <p style="color:rgba(255,255,255,0.7); max-width:34ch;">That page took a wrong turn. Taking you back to the start…</p>
+    <a class="btn btn--secondary" href="./" style="max-width:260px;">Go to QuickWheel</a>
+  </div>
+</body>
+</html>

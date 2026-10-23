@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="QuickWheel — an independent prototype for the last-mile journey from Indian transport hubs to your doorstep. Fair fares, verified pickup points, safety built in.">
+  <title>QuickWheel — Last-mile, sorted</title>
+
+  <!-- Stylesheets. All relative paths so the app works under a GitHub Pages
+       project subpath (https://user.github.io/repo/). Order matters. -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/states.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- Editorial desktop stage. The brand panel is revealed only on wide
+       screens; the app column is the product on every screen size. -->
+  <div class="stage">
+    <aside class="stage__brand" aria-hidden="true">
+      <div class="brand-mark">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+          <circle cx="12" cy="12" r="4"></circle>
+          <line x1="12" y1="2" x2="12" y2="6"></line>
+          <line x1="12" y1="18" x2="12" y2="22"></line>
+          <line x1="2" y1="12" x2="6" y2="12"></line>
+          <line x1="18" y1="12" x2="22" y2="12"></line>
+        </svg>
+      </div>
+      <h2>The ride home from the hub, sorted.</h2>
+      <p>Know the fare, the pickup point and your options before you step off
+         the platform — and get support if something goes wrong.</p>
+      <div class="brand-points">
+        <div class="brand-point"><span class="dot" style="background:#7fd4a8"></span> Fair, upfront fares — nothing hidden</div>
+        <div class="brand-point"><span class="dot" style="background:#b49cf0"></span> Verified drivers &amp; safe pickup points</div>
+        <div class="brand-point"><span class="dot" style="background:#8fb8ff"></span> Luggage &amp; group aware from the first step</div>
+      </div>
+      <p style="font-size:var(--fs-12)">Independent hackathon prototype. Not a government or operator product.</p>
+    </aside>
+
+    <!-- The application column -->
+    <main class="app" id="app">
+      <!-- Persistent demo-mode banner (closeable) -->
+      <div class="demo-banner" id="demo-banner" role="note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="flex:none">
+          <circle cx="12" cy="12" r="9"></circle><line x1="12" y1="8" x2="12" y2="13"></line><circle cx="12" cy="16.5" r="0.4" fill="currentColor" stroke-width="1.5"></circle>
+        </svg>
+        <span class="demo-banner__text"><b>Demo mode.</b> Sample data only — no real bookings, payments or personal data.</span>
+        <button class="demo-banner__close" id="demo-close" aria-label="Dismiss demo notice">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Router renders the active screen here -->
+      <div class="screen" id="screen" role="region" aria-live="polite"></div>
+    </main>
+  </div>
+
+  <!-- Toast portal -->
+  <div class="toast-wrap" id="toast-wrap" aria-live="polite"></div>
+
+  <!-- Boot. type="module" is required because the app uses ES-module imports. -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
